@@ -49,7 +49,7 @@ TypeEffects:
 	db POISON,GRASS,20
 	db POISON,POISON,05
 	db POISON,GROUND,05
-	db POISON,BUG,20
+	;db POISON,BUG,20
 	db POISON,ROCK,05
 	db POISON,GHOST,05
 	db GROUND,FIRE,20
@@ -71,7 +71,7 @@ TypeEffects:
 	db BUG,FLYING,05
 	db BUG,PSYCHIC,20
 	db BUG,GHOST,05
-	db BUG,POISON,20
+	db BUG,POISON,05 ; updated
 	db ROCK,FIRE,20
 	db ROCK,FIGHTING,05
 	db ROCK,GROUND,05
@@ -86,4 +86,43 @@ TypeEffects:
 	db GRASS,DRAGON,05
 	db ICE,DRAGON,20
 	db DRAGON,DRAGON,20
+	db ICE,FIRE,05 ; updated
+	db BUG,DARK,20 ; add types
+	db FIGHTING,DARK,20 ; add types
+	db GHOST,DARK,05 ; add types
+	db DARK,DARK,05 ; add types
+	db PSYCHIC,DARK,00 ; add types
+	db FAIRY,DARK,20 ; add types
+	db NORMAL,STEEL,05 ; add types
+	db FIRE,STEEL,20 ; add types
+	db GRASS,STEEL,05 ; add types
+	db ICE,STEEL,05 ; add types
+	db FIGHTING,STEEL,20 ; add types
+	db POISON,STEEL,00 ; add types
+	db GROUND,STEEL,20 ; add types
+	db FLYING,STEEL,05 ; add types
+	db PSYCHIC,STEEL,05 ; add types
+	db BUG,STEEL,05 ; add types
+	db ROCK,STEEL,05 ; add types
+	db DRAGON,STEEL,05 ; add types
+	db STEEL,STEEL,05 ; add types
+	db FAIRY,STEEL,05 ; add types
+	db FIGHTING,FAIRY,05 ; add types
+	db POISON,FAIRY,20 ; add types
+	db BUG,FAIRY,05 ; add types
+	db DRAGON,FAIRY,00 ; add types
+	db DARK,FAIRY,05 ; add types
+	db STEEL,FAIRY,20 ; add types
+	db DARK,FIGHTING,05 ; add types
+	db DARK,PSYCHIC,20 ; add types
+	db DARK,GHOST,20 ; add types
+	db STEEL,FIRE,05 ; add types
+	db STEEL,WATER,05 ; add types
+	db STEEL,ELECTRIC,05 ; add types
+	db STEEL,ICE,20 ; add types
+	db STEEL,ROCK,20 ; add types
+	db FAIRY,FIRE,05 ; add types
+	db FAIRY,FIGHTING,20 ; add types
+	db FAIRY,POISON,05 ; add types
+	db FAIRY,DRAGON,20 ; add types
 	db $FF
