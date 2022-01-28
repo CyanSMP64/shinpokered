@@ -13,9 +13,9 @@ dw MagnetonPicFront
 dw MagnetonPicBack
 ; attacks known at lvl 0
 db TACKLE
-db SONICBOOM
+db SUPERSONIC
 db THUNDERSHOCK
-db 0
+db THUNDER_WAVE
 db 0 ; growth rate
 ; learnset
 	tmlearn 6

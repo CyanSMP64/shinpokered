@@ -12,10 +12,10 @@ INCBIN ARCANINE_FR,0,1 ; 77, sprite dimensions
 dw ArcaninePicFront
 dw ArcaninePicBack
 ; attacks known at lvl 0
+db BITE
 db ROAR
 db EMBER
 db LEER
-db TAKE_DOWN
 db 5 ; growth rate
 ; learnset
 	tmlearn 6,8

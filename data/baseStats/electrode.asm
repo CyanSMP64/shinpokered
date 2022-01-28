@@ -13,9 +13,9 @@ dw ElectrodePicFront
 dw ElectrodePicBack
 ; attacks known at lvl 0
 db TACKLE
-db SCREECH
+db LIGHT_SCREEN
 db SONICBOOM
-db 0
+db THUNDERSHOCK
 db 0 ; growth rate
 ; learnset
 	tmlearn 6

@@ -15,7 +15,7 @@ dw RaticatePicBack
 db TACKLE
 db TAIL_WHIP
 db QUICK_ATTACK
-db 0
+db FOCUS_ENERGY
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

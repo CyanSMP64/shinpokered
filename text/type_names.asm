@@ -44,7 +44,7 @@ TypeNames:
 .Ice:      db "ICE@"
 .Ground:   db "GROUND@"
 .Rock:     db "ROCK@"
-.Bird:     db "TYPELESS@"	;joenote - Bird type will be used as a neutral typless dummy type for Struggle
+.Bird:     db "???@"	;joenote - Bird type will be used as a neutral typless dummy type for Struggle
 .Bug:      db "BUG@"
 .Ghost:    db "GHOST@"
 .Dragon:   db "DRAGON@"

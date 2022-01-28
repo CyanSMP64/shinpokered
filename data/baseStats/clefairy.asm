@@ -12,8 +12,8 @@ INCBIN CLEFAIRY_FR,0,1 ; 55, sprite dimensions
 dw ClefairyPicFront
 dw ClefairyPicBack
 ; attacks known at lvl 0
-db POUND
 db GROWL
+db POUND
 db 0
 db 0
 db 4 ; growth rate

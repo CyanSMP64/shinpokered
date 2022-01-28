@@ -12,10 +12,10 @@ INCBIN VICTREEBEL_FR,0,1 ; 77, sprite dimensions
 dw VictreebelPicFront
 dw VictreebelPicBack
 ; attacks known at lvl 0
-db SLEEP_POWDER
-db STUN_SPORE
+db VINE_WHIP
+db GROWTH
+db WRAP
 db ACID
-db RAZOR_LEAF
 db 3 ; growth rate
 ; learnset
 	tmlearn 3,6,8

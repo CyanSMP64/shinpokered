@@ -14,8 +14,8 @@ dw IvysaurPicBack
 ; attacks known at lvl 0
 db TACKLE
 db GROWL
+db VINE_WHIP
 db LEECH_SEED
-db 0
 db 3 ; growth rate
 ; learnset
 	tmlearn 3,6,8

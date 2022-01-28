@@ -12,8 +12,8 @@ INCBIN LAPRAS_FR,0,1 ; 77, sprite dimensions
 dw LaprasPicFront
 dw LaprasPicBack
 ; attacks known at lvl 0
+db SING
 db WATER_GUN
-db GROWL
 db 0
 db 0
 db 5 ; growth rate

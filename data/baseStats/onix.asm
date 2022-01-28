@@ -13,9 +13,9 @@ dw OnixPicFront
 dw OnixPicBack
 ; attacks known at lvl 0
 db TACKLE
-db SCREECH
-db 0
-db 0
+db HARDEN
+db BIND
+db ROCK_THROW
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

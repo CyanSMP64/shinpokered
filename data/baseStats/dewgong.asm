@@ -14,8 +14,8 @@ dw DewgongPicBack
 ; attacks known at lvl 0
 db HEADBUTT
 db GROWL
-db AURORA_BEAM
-db 0
+db 0 ; ENCORE
+db 0 ; AQUA_JET
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,7,8

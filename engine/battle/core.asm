@@ -5097,9 +5097,9 @@ CriticalHitTest:
 	sla b                        ; *2 for high critical hit moves (effective +2x crit rate)
 	jr c, .capcritical
 	sla b                        ; *2 again for high critical hit moves (effective +4x crit rate)
-	jr c, .capcritical
-	sla b                        ; *2 again for high critical hit moves (effective +8x crit rate)
-	jr nc, .finishcalc
+	;jr c, .capcritical
+	;sla b                        ; *2 again for high critical hit moves (effective +8x crit rate)
+	jr nc, .finishcalc	; i nerfed high crit moves to 4*speed
 .capcritical
 	ld b, $ff					 ; cap at 255/256
 .finishcalc
@@ -5119,6 +5119,8 @@ HighCriticalMoves:
 	db RAZOR_LEAF
 	db CRABHAMMER
 	db SLASH
+	db RAZOR_WIND
+	db SKY_ATTACK
 	db $FF
 
 
@@ -5170,7 +5172,21 @@ HandleCounterMove:
 	jr z, .counterableType
 	cp FIGHTING
 	jr z, .counterableType
+	cp FLYING
+	jr z, .counterableType
+	cp POISON
+	jr z, .counterableType
+	cp BUG
+	jr z, .counterableType
 	cp BIRD
+	jr z, .counterableType
+	cp GROUND
+	jr z, .counterableType
+	cp ROCK
+	jr z, .counterableType
+	cp GHOST
+	jr z, .counterableType
+	cp STEEL
 	jr z, .counterableType
 ;;;;;;;;;
 ; if the move wasn't a valid counterable type, miss
@@ -7927,6 +7943,7 @@ MoveEffectPointerTable:
 	 dw LeechSeedEffect           ; LEECH_SEED_EFFECT
 	 dw SplashEffect              ; SPLASH_EFFECT
 	 dw DisableEffect             ; DISABLE_EFFECT
+	 dw FlinchSideEffect           ; FLINCH_SIDE_EFFECT3
 
 SleepEffect:
 	ld de, wEnemyMonStatus
@@ -8017,7 +8034,7 @@ PoisonEffect:
 	jr z, .noEffect
 	ld a, [de]
 	cp POISON_SIDE_EFFECT1
-	ld b, $34 ; ~20% chance of poisoning
+	ld b, $4D ; ~30% chance of poisoning
 	jr z, .sideEffectTest
 	cp POISON_SIDE_EFFECT2
 	ld b, $67 ; ~40% chance of poisoning
@@ -8513,7 +8530,7 @@ StatModifierDownEffect:
 	cp ATTACK_DOWN_SIDE_EFFECT
 	jr c, .nonSideEffect
 	call BattleRandom
-	cp $55 ; 85/256 chance for side effects
+	cp $1A ; ~10% chance for side effects
 	jp nc, CantLowerAnymore
 	ld a, [de]
 	sub ATTACK_DOWN_SIDE_EFFECT ; map each stat to 0-3
@@ -8769,11 +8786,11 @@ BideEffect:
 	ld [de], a
 	ld [wPlayerMoveEffect], a
 	ld [wEnemyMoveEffect], a
-	call BattleRandom
-	and $1
-	inc a
-	inc a
-	ld [bc], a ; set Bide counter to 2 or 3 at random
+	;call BattleRandom
+	;and $1
+	;inc a
+	ld a, 2
+	ld [bc], a ; set Bide counter to 2
 	ld a, [H_WHOSETURN]
 	add XSTATITEM_ANIM
 	jp PlayBattleAnimation2
@@ -8791,7 +8808,7 @@ ThrashPetalDanceEffect:
 	call BattleRandom
 	and $1
 	inc a
-	inc a
+	;inc a
 	ld [de], a ; set thrash/petal dance counter to 2 or 3 at random
 	ld a, [H_WHOSETURN]
 	add ANIM_B0
@@ -8972,6 +8989,16 @@ FlinchSideEffect:
 	ld a, [de]
 	cp FLINCH_SIDE_EFFECT1
 	ld b, $1a ; ~10% chance of flinch
+	jr z, .gotEffectChance
+	ld de, wPlayerMoveEffect
+	ld a, [H_WHOSETURN]
+	and a
+	jr z, .flinchSideEffect2
+	ld de, wEnemyMoveEffect
+.flinchSideEffect2
+	ld a, [de]
+	cp FLINCH_SIDE_EFFECT2
+	ld b, $33 ; ~20% chance of flinch
 	jr z, .gotEffectChance
 	ld b, $4d ; ~30% chance of flinch
 .gotEffectChance
@@ -9210,11 +9237,11 @@ RageEffect:	;joenote - modified to last 2 to 3 turns
 	ld bc, wEnemyNumAttacksLeft
 .player
 	set USING_RAGE, [hl] ; mon is now in "rage" mode
-	call BattleRandom
-	and $1
-	inc a
-	inc a
-	ld [bc], a ; set Rage counter to 2 or 3 at random
+	;call BattleRandom
+	;and $1
+	;inc a
+	ld a, 1
+	ld [bc], a ; set Rage counter to 1
 	ret
 
 MimicEffect:
@@ -9362,7 +9389,8 @@ DisableEffect:
 	call BattleRandom
 	and $7
 	;inc a ; 1-8 turns disabled
-	set 3, a ;joenote - will handle this a different way (0-7 turns with bit 3 initialized)
+	;set 3, a ;joenote - will handle this a different way (0-7 turns with bit 3 initialized)
+	ld a, 4 ; disabled for exactly 4 turns
 	inc c ; move 1-4 will be disabled
 	swap c
 	add c ; map disabled move to high nibble of wEnemyDisabledMove / wPlayerDisabledMove

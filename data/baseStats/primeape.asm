@@ -12,10 +12,10 @@ INCBIN PRIMEAPE_FR,0,1 ; 77, sprite dimensions
 dw PrimeapePicFront
 dw PrimeapePicBack
 ; attacks known at lvl 0
-db SCRATCH
 db LEER
-db KARATE_CHOP
-db FURY_SWIPES
+db SCRATCH
+db FOCUS_ENERGY
+db 0 ; TAUNT
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

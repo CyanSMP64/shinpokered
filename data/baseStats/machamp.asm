@@ -12,10 +12,10 @@ INCBIN MACHAMP_FR,0,1 ; 77, sprite dimensions
 dw MachampPicFront
 dw MachampPicBack
 ; attacks known at lvl 0
-db KARATE_CHOP
 db LOW_KICK
 db LEER
-db 0
+db FOCUS_ENERGY
+db BIDE
 db 3 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

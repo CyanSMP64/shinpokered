@@ -13,9 +13,9 @@ dw WigglytuffPicFront
 dw WigglytuffPicBack
 ; attacks known at lvl 0
 db SING
-db DISABLE
-db DEFENSE_CURL
-db DOUBLESLAP
+db POUND
+db MINIMIZE
+db BIDE
 db 4 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

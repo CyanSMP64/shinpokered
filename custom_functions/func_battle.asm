@@ -10,10 +10,10 @@ CheckLowerEnemyPriority:
 	ret
 LowPriorityMoves:
 	cp COUNTER
-;	ret z
-;	cp DUMMY_MOVE1
-;	ret z
-;	cp DUMMY_MOVE2
+	ret z
+	cp ROAR
+	ret z
+	cp WHIRLWIND
 ;	ret z
 ;	cp DUMMY_MOVE3
 ;	ret z
@@ -30,8 +30,8 @@ CheckHigherEnemyPriority:
 	ret
 HighPriorityMoves:
 	cp QUICK_ATTACK
-;	ret z
-;	cp DUMMY_MOVE1
+	ret z
+	cp BIDE
 ;	ret z
 ;	cp DUMMY_MOVE2
 ;	ret z

@@ -12,10 +12,10 @@ INCBIN OMASTAR_FR,0,1 ; 66, sprite dimensions
 dw OmastarPicFront
 dw OmastarPicBack
 ; attacks known at lvl 0
-db WATER_GUN
+db CONSTRICT
 db WITHDRAW
-db HORN_ATTACK
-db 0
+db LEER
+db WATER_GUN
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,7,8

@@ -12,10 +12,10 @@ INCBIN VILEPLUME_FR,0,1 ; 77, sprite dimensions
 dw VileplumePicFront
 dw VileplumePicBack
 ; attacks known at lvl 0
-db STUN_SPORE
-db SLEEP_POWDER
+db ABSORB
+db GROWTH
 db ACID
-db PETAL_DANCE
+db POISONPOWDER
 db 3 ; growth rate
 ; learnset
 	tmlearn 3,6,8

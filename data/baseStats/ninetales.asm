@@ -12,10 +12,10 @@ INCBIN NINETALES_FR,0,1 ; 77, sprite dimensions
 dw NinetalesPicFront
 dw NinetalesPicBack
 ; attacks known at lvl 0
-db EMBER
+db TACKLE
 db TAIL_WHIP
+db EMBER
 db QUICK_ATTACK
-db ROAR
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

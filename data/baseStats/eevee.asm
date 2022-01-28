@@ -13,7 +13,7 @@ dw EeveePicFront
 dw EeveePicBack
 ; attacks known at lvl 0
 db TACKLE
-db SAND_ATTACK
+db GROWL
 db 0
 db 0
 db 0 ; growth rate

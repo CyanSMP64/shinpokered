@@ -15,8 +15,8 @@ RecoilEffect_:
 	srl b
 	rr c
 	ld a, d
-	cp STRUGGLE ; struggle deals 50% recoil damage
-	jr z, .gotRecoilDamage
+	;cp STRUGGLE ; struggle deals 50% recoil damage		; struggle no longer takes 1/2 recoil
+	;jr z, .gotRecoilDamage
 	srl b
 	rr c
 .gotRecoilDamage

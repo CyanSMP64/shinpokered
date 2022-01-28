@@ -15,7 +15,7 @@ dw WeepinbellPicBack
 db VINE_WHIP
 db GROWTH
 db WRAP
-db 0
+db ACID
 db 3 ; growth rate
 ; learnset
 	tmlearn 3,6

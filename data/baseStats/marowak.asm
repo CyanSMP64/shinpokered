@@ -12,10 +12,10 @@ INCBIN MAROWAK_FR,0,1 ; 66, sprite dimensions
 dw MarowakPicFront
 dw MarowakPicBack
 ; attacks known at lvl 0
-db BONE_CLUB
 db GROWL
+db TAIL_WHIP
 db LEER
-db FOCUS_ENERGY
+db BONE_CLUB
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

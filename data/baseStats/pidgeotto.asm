@@ -12,10 +12,10 @@ INCBIN PIDGEOTTO_FR,0,1 ; 66, sprite dimensions
 dw PidgeottoPicFront
 dw PidgeottoPicBack
 ; attacks known at lvl 0
-db GUST
+db TACKLE
 db SAND_ATTACK
-db 0
-db 0
+db GUST
+db QUICK_ATTACK
 db 3 ; growth rate
 ; learnset
 	tmlearn 2,4,6

@@ -12,9 +12,9 @@ INCBIN MR_MIME_FR,0,1 ; 66, sprite dimensions
 dw MrMimePicFront
 dw MrMimePicBack
 ; attacks known at lvl 0
-db CONFUSION
+db POUND
 db BARRIER
-db 0
+db CONFUSION
 db 0
 db 0 ; growth rate
 ; learnset

@@ -12,8 +12,8 @@ INCBIN BEEDRILL_FR,0,1 ; 77, sprite dimensions
 dw BeedrillPicFront
 dw BeedrillPicBack
 ; attacks known at lvl 0
-db FURY_ATTACK
-db 0
+db TWINEEDLE
+db PECK
 db 0
 db 0
 db 0 ; growth rate

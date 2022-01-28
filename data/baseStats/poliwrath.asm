@@ -12,10 +12,10 @@ INCBIN POLIWRATH_FR,0,1 ; 77, sprite dimensions
 dw PoliwrathPicFront
 dw PoliwrathPicBack
 ; attacks known at lvl 0
+db BUBBLE
+db POUND
 db HYPNOSIS
 db WATER_GUN
-db DOUBLESLAP
-db BODY_SLAM
 db 3 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

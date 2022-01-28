@@ -13,9 +13,9 @@ dw NidorinoPicFront
 dw NidorinoPicBack
 ; attacks known at lvl 0
 db LEER
-db TACKLE
-db HORN_ATTACK
-db 0
+db PECK
+db FOCUS_ENERGY
+db POISON_STING
 db 3 ; growth rate
 ; learnset
 	tmlearn 6,7,8

@@ -13,7 +13,7 @@ dw KangaskhanPicFront
 dw KangaskhanPicBack
 ; attacks known at lvl 0
 db COMET_PUNCH
-db RAGE
+db LEER
 db 0
 db 0
 db 0 ; growth rate

@@ -15,7 +15,7 @@ dw WartortlePicBack
 db TACKLE
 db TAIL_WHIP
 db BUBBLE
-db 0
+db WITHDRAW
 db 3 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

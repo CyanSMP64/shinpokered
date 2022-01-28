@@ -14,8 +14,8 @@ dw GolduckPicBack
 ; attacks known at lvl 0
 db SCRATCH
 db TAIL_WHIP
-db DISABLE
-db 0
+db WATER_GUN
+db CONFUSION
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

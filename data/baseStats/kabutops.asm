@@ -14,8 +14,8 @@ dw KabutopsPicBack
 ; attacks known at lvl 0
 db SCRATCH
 db HARDEN
+db LEER
 db ABSORB
-db 0
 db 0 ; growth rate
 ; learnset
 	tmlearn 2,3,5,6,8

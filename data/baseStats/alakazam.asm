@@ -12,10 +12,10 @@ INCBIN ALAKAZAM_FR,0,1 ; 77, sprite dimensions
 dw AlakazamPicFront
 dw AlakazamPicBack
 ; attacks known at lvl 0
-db TELEPORT
-db KINESIS
 db CONFUSION
+db TELEPORT
 db DISABLE
+db KINESIS
 db 3 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

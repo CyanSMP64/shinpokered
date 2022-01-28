@@ -14,8 +14,8 @@ dw SeadraPicBack
 ; attacks known at lvl 0
 db BUBBLE
 db SMOKESCREEN
-db 0
-db 0
+db WATER_GUN
+db LEER
 db 0 ; growth rate
 ; learnset
 	tmlearn 6

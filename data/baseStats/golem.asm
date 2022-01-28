@@ -14,8 +14,8 @@ dw GolemPicBack
 ; attacks known at lvl 0
 db TACKLE
 db DEFENSE_CURL
-db 0
-db 0
+db SAND_ATTACK
+db BIDE
 db 3 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

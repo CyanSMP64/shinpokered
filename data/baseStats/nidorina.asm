@@ -13,9 +13,9 @@ dw NidorinaPicFront
 dw NidorinaPicBack
 ; attacks known at lvl 0
 db GROWL
-db TACKLE
 db SCRATCH
-db 0
+db TAIL_WHIP
+db POISON_STING
 db 3 ; growth rate
 ; learnset
 	tmlearn 6,7,8

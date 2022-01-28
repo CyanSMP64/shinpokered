@@ -12,10 +12,10 @@ INCBIN GYARADOS_FR,0,1 ; 77, sprite dimensions
 dw GyaradosPicFront
 dw GyaradosPicBack
 ; attacks known at lvl 0
-db BITE
-db DRAGON_RAGE
+db THRASH
 db LEER
-db HYDRO_PUMP
+db DRAGON_RAGE
+db BIND
 db 5 ; growth rate
 ; learnset
 	tmlearn 6,8

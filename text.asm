@@ -2172,7 +2172,8 @@ _LoweredItsHeadText::
 
 _SkyAttackGlowingText::
 	text ""
-	line "is glowing!"
+	line "became cloaked in"
+	cont "a harsh light!"
 	prompt
 
 _FlewUpHighText::
@@ -2211,7 +2212,8 @@ _NothingHappenedText::
 	prompt
 
 _NoEffectText::
-	text "No effect!"
+	text "But nothing"
+	line "happened!"
 	prompt
 
 _ButItFailedText::

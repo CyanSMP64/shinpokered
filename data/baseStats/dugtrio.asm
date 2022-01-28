@@ -13,9 +13,9 @@ dw DugtrioPicFront
 dw DugtrioPicBack
 ; attacks known at lvl 0
 db SCRATCH
+db SAND_ATTACK
 db GROWL
-db DIG
-db 0
+db AGILITY
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

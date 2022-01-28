@@ -14,8 +14,8 @@ dw DodrioPicBack
 ; attacks known at lvl 0
 db PECK
 db GROWL
-db FURY_ATTACK
-db 0
+db QUICK_ATTACK
+db RAGE
 db 0 ; growth rate
 ; learnset
 	tmlearn 4,6,8

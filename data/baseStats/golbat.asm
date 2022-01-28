@@ -12,10 +12,10 @@ INCBIN GOLBAT_FR,0,1 ; 77, sprite dimensions
 dw GolbatPicFront
 dw GolbatPicBack
 ; attacks known at lvl 0
-db LEECH_LIFE
-db SCREECH
+db ABSORB
+db SUPERSONIC
+db WING_ATTACK
 db BITE
-db 0
 db 0 ; growth rate
 ; learnset
 	tmlearn 2,4,6
