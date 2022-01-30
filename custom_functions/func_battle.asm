@@ -14,10 +14,8 @@ LowPriorityMoves:
 	cp ROAR
 	ret z
 	cp WHIRLWIND
-;	ret z
-;	cp DUMMY_MOVE3
-;	ret z
-;	cp DUMMY_MOVE4
+	ret z
+	cp MIRROR_COAT
 	ret
 
 CheckHigherPlayerPriority:	
@@ -32,12 +30,6 @@ HighPriorityMoves:
 	cp QUICK_ATTACK
 	ret z
 	cp BIDE
-;	ret z
-;	cp DUMMY_MOVE2
-;	ret z
-;	cp DUMMY_MOVE3
-;	ret z
-;	cp DUMMY_MOVE4
 	ret
 
 

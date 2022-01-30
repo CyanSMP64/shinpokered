@@ -130,7 +130,7 @@ MoveEnd:
 	move BIDE,         BIDE_EFFECT,                  0, NORMAL,   100, 10
 	move METRONOME,    METRONOME_EFFECT,             0, BIRD,     100, 10
 	move MIRROR_MOVE,  MIRROR_MOVE_EFFECT,           0, FLYING,   100, 20
-	move SELFDESTRUCT, EXPLODE_EFFECT,             200, NORMAL,   100,  5 ; todo: not half defense
+	move SELFDESTRUCT, EXPLODE_EFFECT,             200, NORMAL,   100,  5
 	move EGG_BOMB,     NO_ADDITIONAL_EFFECT,       100, NORMAL,    75, 10
 	move LICK,         PARALYZE_SIDE_EFFECT2,       30, GHOST,    100, 30
 	move SMOG,         POISON_SIDE_EFFECT2,         30, POISON,    70, 20
@@ -163,7 +163,7 @@ MoveEnd:
 	move SPLASH,       SPLASH_EFFECT,                0, NORMAL,   100, 40
 	move ACID_ARMOR,   DEFENSE_UP2_EFFECT,           0, POISON,   100, 20
 	move CRABHAMMER,   NO_ADDITIONAL_EFFECT,       100, WATER,     90, 10
-	move EXPLOSION,    EXPLODE_EFFECT,             250, NORMAL,   100,  5 ; todo: not half defense
+	move EXPLOSION,    EXPLODE_EFFECT,             250, NORMAL,   100,  5
 	move FURY_SWIPES,  TWO_TO_FIVE_ATTACKS_EFFECT,  18, NORMAL,    80, 15
 	move BONEMERANG,   ATTACK_TWICE_EFFECT,         50, GROUND,    90, 10
 	move REST,         HEAL_EFFECT,                  0, PSYCHIC,  100, 10
@@ -175,4 +175,14 @@ MoveEnd:
 	move SUPER_FANG,   SUPER_FANG_EFFECT,            1, NORMAL,    90, 10
 	move SLASH,        NO_ADDITIONAL_EFFECT,        70, NORMAL,   100, 20
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,   100, 10
+	move SLUDGE_BOMB,  POISON_SIDE_EFFECT1,         90, POISON,   100, 10
+	move OUTRAGE,      THRASH_PETAL_DANCE_EFFECT,  120, DRAGON,   100, 10
+	move MEGAHORN,     NO_ADDITIONAL_EFFECT,       120, BUG,       85, 10
+	move IRON_TAIL,    DEFENSE_DOWN_SIDE_EFFECT,   100, STEEL,     75, 15
+	move CRUNCH,       DEFENSE_DOWN_SIDE_EFFECT,    80, DARK,     100, 15
+	move MIRROR_COAT,  NO_ADDITIONAL_EFFECT,         1, PSYCHIC,  100, 20
+	move SHADOW_BALL,  SPECIAL_DOWN_SIDE_EFFECT,    80, GHOST,    100, 15
+	move HEAT_WAVE,    BURN_SIDE_EFFECT1,           95, FIRE,      90, 10
+	move WILL_O_WISP,  BURN_EFFECT,                  0, FIRE,      85, 15
+	move CALM_MIND,    SPECIAL_UP1_EFFECT,           0, PSYCHIC,  100, 20
 	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,     100,  1 ; take 1/4 recoil damage

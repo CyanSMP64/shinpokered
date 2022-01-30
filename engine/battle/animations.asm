@@ -2539,7 +2539,7 @@ MoveSoundTable:
 	db SFX_BATTLE_2A,         $f0,$60 ; BUBBLEBEAM
 	db SFX_BATTLE_28,         $00,$80 ; AURORA_BEAM
 	db SFX_BATTLE_36,         $00,$80 ; HYPER_BEAM
-	db SFX_PECK,$01,          $a0 ; PECK
+	db SFX_PECK,			  $01,$a0 ; PECK
 	db SFX_BATTLE_13,         $f0,$20 ; DRILL_PECK
 	db SFX_BATTLE_23,         $01,$c0 ; SUBMISSION
 	db SFX_BATTLE_23,         $00,$80 ; LOW_KICK
@@ -2640,6 +2640,16 @@ MoveSoundTable:
 	db SFX_BATTLE_26,         $f0,$ff ; SUPER_FANG
 	db SFX_NOT_VERY_EFFECTIVE,$01,$ff ; SLASH
 	db SFX_BATTLE_2C,         $d8,$04 ; SUBSTITUTE
+	db SFX_BATTLE_2A,         $60,$20 ; SLUDGE_BOMB
+	db SFX_BATTLE_13,         $00,$e0 ; OUTRAGE
+	db SFX_BATTLE_25,         $00,$10 ; MEGAHORN
+	db SFX_BATTLE_25,         $00,$10 ; IRON_TAIL
+	db SFX_BATTLE_1E,         $0e,$ff ; CRUNCH
+	db SFX_BATTLE_33,         $10,$5a ; MIRROR_COAT
+	db SFX_BATTLE_13,         $f1,$ff ; SHADOW_BALL
+	db SFX_BATTLE_29,         $f0,$e0 ; HEAT_WAVE
+	db SFX_BATTLE_13,         $f1,$ff ; WILL_O_WISP
+	db SFX_BATTLE_09,         $30,$e0 ; CALM_MIND
 	db SFX_BATTLE_0B,         $00,$80 ; STRUGGLE
 	db SFX_BATTLE_0B,         $00,$80
 

@@ -163,6 +163,16 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
+	dw SludgeBombAnim
+	dw OutrageAnim
+	dw MegahornAnim
+	dw IronTailAnim
+	dw CrunchAnim
+	dw MirrorCoatAnim
+	dw ShadowBallAnim
+	dw HeatWaveAnim
+	dw WillOWispAnim
+	dw CalmMindAnim
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -1125,6 +1135,81 @@ SubstituteAnim:
 	db SE_SUBSTITUTE_MON, $FF
 	db $FF
 
+SludgeBombAnim:
+	db $46,$A4,$13
+	db $46,$A4,$14
+	db $FF
+
+OutrageAnim:
+	db SE_DARK_SCREEN_FLASH, $A5
+	db $46,$FF,$04
+	db $FF
+
+MegahornAnim:
+	db $02,$A6,$46
+	db SE_DARK_SCREEN_FLASH, $FF
+	db $02,$FF,$46
+	db SE_DARK_SCREEN_FLASH, $FF
+	db $46,$FF,$05
+	db $FF
+
+IronTailAnim:
+	db SE_LIGHT_SCREEN_PALETTE, $69
+	db $46,$FF,$43
+	db SE_DARK_SCREEN_FLASH, $FF
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db SE_DELAY_ANIMATION_10, $FF
+	db SE_SLIDE_MON_OFF, $A7
+	db $06,$FF,$01
+	db SE_SHOW_MON_PIC, $FF
+	db $FF
+
+CrunchAnim:
+	db SE_DARK_SCREEN_PALETTE, $A8
+	db $08,$FF,$02
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+
+MirrorCoatAnim:
+	db SE_LIGHT_SCREEN_PALETTE, $A9
+	db $46,$FF,$33
+	db $43,$80,$3F
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+
+ShadowBallAnim:
+	db SE_DARK_SCREEN_PALETTE, $AA
+	db $06,$FF,$56
+	db $08,$FF,$01
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+
+HeatWaveAnim:
+	db SE_LIGHT_SCREEN_PALETTE, $AB
+	db $46,$FF,$0C
+	db $46,$FF,$0D
+	db $46,$FF,$0E
+	db $46,$FF,$0C
+	db $46,$FF,$0D
+	db $46,$FF,$0E
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+
+WillOWispAnim:
+	db SE_DARK_SCREEN_PALETTE, $AC
+	db $46,$FF,$57
+	db $46,$AC,$0C
+	db $46,$FF,$0D
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+
+CalmMindAnim:
+	db SE_DARKEN_MON_PALETTE, $FF
+	db $46,$AD,$43
+	db $46,$AD,$43
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+
 BallTossAnim:
 	db $03,$FF,$06
 	db $FF
@@ -1348,6 +1433,8 @@ SubanimationPointers:
 	dw Subanimation53
 	dw Subanimation54
 	dw Subanimation55
+	dw Subanimation56
+	dw Subanimation57
 
 Subanimation04:
 	db $43
@@ -1483,6 +1570,16 @@ Subanimation12:
 	db $17,$3e,$00
 	db $17,$3f,$00
 	db $17,$1f,$00
+
+Subanimation56:
+	db $67
+	db $47,$30,$00
+	db $47,$39,$00
+	db $47,$3a,$00
+	db $47,$3b,$00
+	db $47,$3c,$00
+	db $47,$3d,$00
+	db $47,$3e,$00
 
 Subanimation00:
 	db $41
@@ -2047,6 +2144,15 @@ Subanimation3e:
 	db $02,$10,$00
 	db $34,$10,$00
 	db $02,$10,$00
+
+Subanimation57:
+	db $86
+	db $0c,$31,$00
+	db $0c,$32,$00
+	db $0c,$92,$00
+	db $0c,$0e,$00
+	db $0c,$0f,$00
+	db $0c,$10,$00
 
 Subanimation3f:
 	db $72

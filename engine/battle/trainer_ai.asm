@@ -183,15 +183,27 @@ AIMoveChoiceModification1:
 	ld a, [wPlayerMovePower]
 	and a
 	jp z, .heavydiscourage	;heavily discourage counter if enemy is using zero-power move
-	ld a, [wPlayerMoveType]
-	cp NORMAL
-	jr z, .countercheck_end	; continue on if countering a normal move
-	cp FIGHTING
-	jr z, .countercheck_end	; continue on if countering a fighting move
-	cp BIRD
+	ld a, [wPlayerSelectedMove]
+	call PhysicalSpecialSplit
+	cp a, PHYSICAL
 	jr z, .countercheck_end	; continue on if countering STRUGGLE or other typeless move
 	jp .heavydiscourage	;else heavily discourage since the player move type is not applicable to counter
 .countercheck_end
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - do not use mirror coat against a non-applicable move
+	ld a, [wEnemyMoveNum]	
+	cp MIRROR_COAT
+	jr nz, .mirrorcoatcheck_end	;if this move is not mirror coat then jump out
+	ld a, [wPlayerMovePower]
+	and a
+	jp z, .heavydiscourage	;heavily discourage mirror coat if enemy is using zero-power move
+	ld a, [wPlayerSelectedMove]
+	call PhysicalSpecialSplit
+	cp a, SPECIAL
+	jr z, .mirrorcoatcheck_end	
+	jp .heavydiscourage	;else heavily discourage since the player move type is not applicable to counter
+.mirrorcoatcheck_end
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - do not use moves that are ineffective against substitute if a substitute is up
@@ -618,6 +630,7 @@ StatusAilmentMoveEffects:
 	db SLEEP_EFFECT
 	db POISON_EFFECT
 	db PARALYZE_EFFECT
+	db BURN_EFFECT
 	db $FF
 
 SubstituteImmuneEffects:	;joenote - added this table to track for substitute immunities
@@ -625,6 +638,7 @@ SubstituteImmuneEffects:	;joenote - added this table to track for substitute imm
 	db SLEEP_EFFECT
 	db POISON_EFFECT
 	db PARALYZE_EFFECT
+	db BURN_EFFECT
 	db CONFUSION_EFFECT
 	db DRAIN_HP_EFFECT
 	db LEECH_SEED_EFFECT

@@ -4545,9 +4545,10 @@ GetDamageVarsForPlayerAttack:
 	and a
 	ld d, a ; d = move power
 	ret z ; return if move power is zero
-	ld a, [hl] ; a = [wPlayerMoveType]
-	cp FIRE ; types >= FIRE are all special
-	jr nc, .specialAttack
+	ld a,[wPlayerSelectedMove]
+	call PhysicalSpecialSplit
+	cp a, SPECIAL
+	jr z, .specialAttack
 .physicalAttack
 	ld hl, wEnemyMonDefense
 	ld a, [hli]
@@ -4649,9 +4650,10 @@ GetDamageVarsForEnemyAttack:
 	ld d, a ; d = move power
 	and a
 	ret z ; return if move power is zero
-	ld a, [hl] ; a = [wEnemyMoveType]
-	cp FIRE ; types >= FIRE are all special
-	jr nc, .specialAttack
+	ld a,[wEnemySelectedMove]
+	call PhysicalSpecialSplit
+	cp a, SPECIAL
+	jr z, .specialAttack
 .physicalAttack
 	ld hl, wBattleMonDefense
 	ld a, [hli]
@@ -4847,13 +4849,13 @@ CalculateDamage:
 	ld a, [wEnemyMoveEffect]
 .effect
 
-; EXPLODE_EFFECT halves defense.
-	cp EXPLODE_EFFECT
-	jr nz, .ok
-	srl c
-	jr nz, .ok
-	inc c ; ...with a minimum value of 1 (used as a divisor later on)
-.ok
+;; EXPLODE_EFFECT halves defense.
+;	cp EXPLODE_EFFECT
+;	jr nz, .ok
+;	srl c
+;	jr nz, .ok
+;	inc c ; ...with a minimum value of 1 (used as a divisor later on)
+;.ok
 
 ; Multi-hit attacks may or may not have 0 bp.
 	cp TWO_TO_FIVE_ATTACKS_EFFECT
@@ -5146,12 +5148,18 @@ HandleCounterMove:
 	ld a, [wEnemySelectedMove]
 .next
 	cp COUNTER
-	ret nz ; return if not using Counter
+	jr z, .usingCounter
+	cp MIRROR_COAT
+	jr z, .usingMirrorCoat
+	ret ; return if not using Counter or Mirror Coat
+.usingCounter
 	ld a, $01
 	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
 	ld a, [hl]
 	cp COUNTER
-	ret z ; miss if the opponent's last selected move is Counter.
+	jr z, .counterMiss ; miss if the opponent's last selected move is Counter.
+	cp MIRROR_COAT
+	jr z, .counterMiss ; miss if the opponent's last selected move is Mirror Coat.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - If this bit is set, the opponent either hurt itself in confusion or took crash damage.
 ;			Make Counter miss and reset the bit.
@@ -5164,32 +5172,13 @@ HandleCounterMove:
 	ld a, [de]
 	and a
 	ret z ; miss if the opponent's last selected move's Base Power is 0.
-; check if the move the target last selected was Normal or Fighting type
-	inc de
-	ld a, [de]
-;;;;;;;;;joenote - counter will work on BIRD type since it's now typeless for STRUGGLE instead of normal type
-	and a ; normal type
-	jr z, .counterableType
-	cp FIGHTING
-	jr z, .counterableType
-	cp FLYING
-	jr z, .counterableType
-	cp POISON
-	jr z, .counterableType
-	cp BUG
-	jr z, .counterableType
-	cp BIRD
-	jr z, .counterableType
-	cp GROUND
-	jr z, .counterableType
-	cp ROCK
-	jr z, .counterableType
-	cp GHOST
-	jr z, .counterableType
-	cp STEEL
-	jr z, .counterableType
+; check if the move the target last selected was physical
+	ld a,[hl]
+	call PhysicalSpecialSplit
+	cp a, PHYSICAL
+	jr z,.counterableType
 ;;;;;;;;;
-; if the move wasn't a valid counterable type, miss
+; if the move wasn't a physical move, miss
 	xor a
 	ret
 .counterableType
@@ -5216,6 +5205,36 @@ HandleCounterMove:
 	ld [wMoveMissed], a
 	call MoveHitTest ; do the normal move hit test in addition to Counter's special rules
 	xor a
+	ret
+.usingMirrorCoat
+	ld a, $01
+	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
+	ld a, [hl]
+	cp COUNTER
+	jr z, .counterMiss ; miss if the opponent's last selected move is Counter.
+	cp MIRROR_COAT
+	jr z, .counterMiss ; miss if the opponent's last selected move is Mirror Coat.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - If this bit is set, the opponent either hurt itself in confusion or took crash damage.
+;			Make Counter miss and reset the bit.
+	ld a, [wUnusedC000]
+	bit 7, a	;check a for Mirror Coat miss bit
+	res 7, a ; resets the bit (does not affect flags)
+	ld [wUnusedC000], a
+	ret nz	;return if bit is set causing Mirror Coat to miss.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	ld a, [de]
+	and a
+	ret z ; miss if the opponent's last selected move's Base Power is 0.
+; check if the move the target last selected was special
+	ld a,[hl]
+	call PhysicalSpecialSplit
+	cp a, SPECIAL
+	jr z,.counterableType
+;;;;;;;;;
+; if the move wasn't a special move, miss
+	xor a
+.counterMiss
 	ret
 
 ApplyAttackToEnemyPokemon:
@@ -7943,7 +7962,8 @@ MoveEffectPointerTable:
 	 dw LeechSeedEffect           ; LEECH_SEED_EFFECT
 	 dw SplashEffect              ; SPLASH_EFFECT
 	 dw DisableEffect             ; DISABLE_EFFECT
-	 dw FlinchSideEffect           ; FLINCH_SIDE_EFFECT3
+	 dw FlinchSideEffect          ; FLINCH_SIDE_EFFECT3
+	 dw BurnEffect                ; BURN_EFFECT
 
 SleepEffect:
 	ld de, wEnemyMonStatus
@@ -9416,6 +9436,9 @@ MoveWasDisabledText:
 	TX_FAR _MoveWasDisabledText
 	db "@"
 
+BurnEffect:
+	jpab BurnEffect_
+
 PayDayEffect:
 	jpab PayDayEffect_
 
@@ -9477,6 +9500,14 @@ PrintMayNotAttackText:
 
 ParalyzedMayNotAttackText:
 	TX_FAR _ParalyzedMayNotAttackText
+	db "@"
+
+PrintBurnedText:
+	ld hl, Burned_Text
+	jp PrintText
+
+Burned_Text:
+	TX_FAR _BurnedText
 	db "@"
 
 CheckTargetSubstitute:
@@ -9650,4 +9681,13 @@ DecAttack:
 DeactivateRageInA:
 	ret nz
 	res USING_RAGE, a
+	ret
+
+; Determine if a move is Physical, Special, or Status
+; INPUT: Move ID in register a
+; OUTPUT: Move Physical/Special/Status type in register a
+PhysicalSpecialSplit:
+	ld [wTempMoveID], a
+	callba _PhysicalSpecialSplit
+	ld a, [wTempMoveID]
 	ret

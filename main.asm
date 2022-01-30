@@ -1733,6 +1733,8 @@ Mansion4Blocks: INCBIN "maps/mansion4.blk"
 
 INCLUDE "engine/battle/init_battle_variables.asm"
 INCLUDE "engine/battle/moveEffects/paralyze_effect.asm"
+INCLUDE "engine/battle/moveEffects/burn_effect.asm"
+INCLUDE "engine/battle/physical_special_split.asm"
 
 INCLUDE "engine/overworld/card_key.asm"
 
@@ -2467,10 +2469,6 @@ INCLUDE "engine/overworld/ssanne.asm"
 
 INCLUDE "data/animations.asm"
 
-INCLUDE "engine/evolution.asm"
-
-INCLUDE "engine/overworld/elevator.asm"
-
 
 SECTION "bank2D",ROMX,BANK[$2D]	;joenote - This is a known empty bank. Going to start moving stuff here
 
@@ -2505,6 +2503,10 @@ RedFishingTilesSide:  INCBIN "gfx/red_fishing_tile_side.2bpp"
 RedFishingRodTiles:   INCBIN "gfx/red_fishingrod_tiles.2bpp"
 
 INCLUDE "engine/items/tm_prices.asm"
+
+INCLUDE "engine/evolution.asm"
+
+INCLUDE "engine/overworld/elevator.asm"
 
 
 SECTION "bank2E",ROMX,BANK[$2E]	
