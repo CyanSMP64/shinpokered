@@ -22,7 +22,7 @@ MoveEnd:
 	move THUNDERPUNCH, PARALYZE_SIDE_EFFECT1,       75, ELECTRIC, 100, 15
 	move SCRATCH,      NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 35
 	move VICEGRIP,     NO_ADDITIONAL_EFFECT,        55, NORMAL,   100, 30
-	move GUILLOTINE,   OHKO_EFFECT,                  1, NORMAL,    30,  5 ; todo: successful ohko based on level rather than speed
+	move GUILLOTINE,   OHKO_EFFECT,                  1, NORMAL,    30,  5 
 	move RAZOR_WIND,   CHARGE_EFFECT,               80, NORMAL,   100, 10
 	move SWORDS_DANCE, ATTACK_UP2_EFFECT,            0, NORMAL,   100, 20
 	move CUT,          NO_ADDITIONAL_EFFECT,        50, NORMAL,    95, 30
@@ -42,7 +42,7 @@ MoveEnd:
 	move HEADBUTT,     FLINCH_SIDE_EFFECT3,         70, NORMAL,   100, 15
 	move HORN_ATTACK,  NO_ADDITIONAL_EFFECT,        65, NORMAL,   100, 25
 	move FURY_ATTACK,  TWO_TO_FIVE_ATTACKS_EFFECT,  15, NORMAL,    85, 20
-	move HORN_DRILL,   OHKO_EFFECT,                  1, NORMAL,    30,  5 ; todo: successful ohko based on level rather than speed
+	move HORN_DRILL,   OHKO_EFFECT,                  1, NORMAL,    30,  5
 	move TACKLE,       NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 35
 	move BODY_SLAM,    PARALYZE_SIDE_EFFECT2,       85, NORMAL,   100, 15
 	move WRAP,         TRAPPING_EFFECT,             15, NORMAL,    90, 20
@@ -84,7 +84,7 @@ MoveEnd:
 	move ABSORB,       DRAIN_HP_EFFECT,             40, GRASS,    100, 15
 	move MEGA_DRAIN,   DRAIN_HP_EFFECT,             75, GRASS,    100, 10
 	move LEECH_SEED,   LEECH_SEED_EFFECT,            0, GRASS,     90, 10
-	move GROWTH,       SPECIAL_UP1_EFFECT,           0, NORMAL,   100, 20 ; todo: raise both attack and special
+	move GROWTH,       GROWTH_EFFECT,                0, NORMAL,   100, 20 ; todo: raise both attack and special
 	move RAZOR_LEAF,   NO_ADDITIONAL_EFFECT,        55, GRASS,     95, 25
 	move SOLARBEAM,    CHARGE_EFFECT,              200, GRASS,    100, 10
 	move POISONPOWDER, POISON_EFFECT,                0, POISON,    75, 35
@@ -100,7 +100,7 @@ MoveEnd:
 	move THUNDER,      PARALYZE_SIDE_EFFECT2,      110, ELECTRIC,  70, 10
 	move ROCK_THROW,   NO_ADDITIONAL_EFFECT,        50, ROCK,      90, 15
 	move EARTHQUAKE,   NO_ADDITIONAL_EFFECT,       100, GROUND,   100, 10
-	move FISSURE,      OHKO_EFFECT,                  1, GROUND,    30,  5 ; todo: successful ohko based on level rather than speed
+	move FISSURE,      OHKO_EFFECT,                  1, GROUND,    30,  5
 	move DIG,          CHARGE_EFFECT,               80, GROUND,   100, 10
 	move TOXIC,        POISON_EFFECT,                0, POISON,    90, 10
 	move CONFUSION,    CONFUSION_SIDE_EFFECT,       50, PSYCHIC,  100, 25
@@ -171,7 +171,7 @@ MoveEnd:
 	move HYPER_FANG,   FLINCH_SIDE_EFFECT1,         80, NORMAL,    90, 15
 	move SHARPEN,      ATTACK_UP1_EFFECT,            0, NORMAL,   100, 30
 	move CONVERSION,   CONVERSION_EFFECT,            0, NORMAL,   100, 30
-	move TRI_ATTACK,   NO_ADDITIONAL_EFFECT,        80, NORMAL,   100, 10 ; todo: implement tri attack effect
+	move TRI_ATTACK,   TRI_ATTACK_EFFECT,           80, NORMAL,   100, 10 ; todo: implement tri attack effect
 	move SUPER_FANG,   SUPER_FANG_EFFECT,            1, NORMAL,    90, 10
 	move SLASH,        NO_ADDITIONAL_EFFECT,        70, NORMAL,   100, 20
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,   100, 10

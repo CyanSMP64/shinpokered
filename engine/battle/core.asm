@@ -7964,6 +7964,8 @@ MoveEffectPointerTable:
 	 dw DisableEffect             ; DISABLE_EFFECT
 	 dw FlinchSideEffect          ; FLINCH_SIDE_EFFECT3
 	 dw BurnEffect                ; BURN_EFFECT
+	 dw GrowthEffect              ; GROWTH_EFFECT
+	 dw TriAttackEffect           ; TRI_ATTACK_EFFECT
 
 SleepEffect:
 	ld de, wEnemyMonStatus
@@ -8129,23 +8131,27 @@ DrainHPEffect:
 	jpab DrainHPEffect_
 
 ExplodeEffect:
-	ld hl, wBattleMonHP
-	ld de, wPlayerBattleStatus2
-	ld a, [H_WHOSETURN]
+	jpab ExplodeEffect_
+
+TriAttackEffect:
+	ld b, BURN_SIDE_EFFECT1
+	ld a, [hRandomSub] ; grab a random number
+	cp 85 ; 85 / 256 chance = 33%
+	jr c, .gotStatusEffect
+	inc b ; FREEZE_SIDE_EFFECT
+	cp 170 ; (170-85) / 256 chance = 33%
+	jr c, .gotStatusEffect
+	inc b ; PARALYZE_SIDE_EFFECT1 ; remaining 33%
+.gotStatusEffect
+	ld a, [H_WHOSETURN] ; check if it is the player's turn or the opponent's
 	and a
-	jr z, .faintUser
-	ld hl, wEnemyMonHP
-	ld de, wEnemyBattleStatus2
-.faintUser
-	xor a
-	ld [hli], a ; set the mon's HP to 0
-	ld [hli], a
-	inc hl
-	ld [hl], a ; set mon's status to 0
-	ld a, [de]
-	res SEEDED, a ; clear mon's leech seed status
-	ld [de], a
-	ret
+	ld a, b ; get the effect we chose earlier
+	jr nz, .opponent
+	ld [wPlayerMoveEffect], a ; store it as the player's move effect if player's turn
+	jr FreezeBurnParalyzeEffect
+.opponent
+	ld [wEnemyMoveEffect], a ; store it as the enemy's move effect if enemy's turn
+; fallthrough to FreezeBurnParalyzeEffect
 
 FreezeBurnParalyzeEffect:
 	xor a
@@ -8806,9 +8812,6 @@ BideEffect:
 	ld [de], a
 	ld [wPlayerMoveEffect], a
 	ld [wEnemyMoveEffect], a
-	;call BattleRandom
-	;and $1
-	;inc a
 	ld a, 2
 	ld [bc], a ; set Bide counter to 2
 	ld a, [H_WHOSETURN]
@@ -9226,14 +9229,7 @@ SubstituteEffect:
 	jpab SubstituteEffect_
 
 HyperBeamEffect:
-	ld hl, wPlayerBattleStatus2
-	ld a, [H_WHOSETURN]
-	and a
-	jr z, .hyperBeamEffect
-	ld hl, wEnemyBattleStatus2
-.hyperBeamEffect
-	set NEEDS_TO_RECHARGE, [hl] ; mon now needs to recharge
-	ret
+	jpab HyperBeamEffect_
 
 ClearHyperBeam:	;for whoever's turn it is, clear their opponent's hyperbeam status
 	push hl
@@ -9247,22 +9243,8 @@ ClearHyperBeam:	;for whoever's turn it is, clear their opponent's hyperbeam stat
 	pop hl
 	ret
 
-RageEffect:	;joenote - modified to last 2 to 3 turns
-	ld hl, wPlayerBattleStatus2
-	ld bc, wPlayerNumAttacksLeft
-	ld a, [H_WHOSETURN]
-	and a
-	jr z, .player
-	ld hl, wEnemyBattleStatus2
-	ld bc, wEnemyNumAttacksLeft
-.player
-	set USING_RAGE, [hl] ; mon is now in "rage" mode
-	;call BattleRandom
-	;and $1
-	;inc a
-	ld a, 1
-	ld [bc], a ; set Rage counter to 1
-	ret
+RageEffect:
+	jpab RageEffect_
 
 MimicEffect:
 	ld c, 50
@@ -9438,6 +9420,9 @@ MoveWasDisabledText:
 
 BurnEffect:
 	jpab BurnEffect_
+
+GrowthEffect:
+	jpab GrowthEffect_
 
 PayDayEffect:
 	jpab PayDayEffect_

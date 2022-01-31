@@ -349,6 +349,9 @@ INCLUDE "engine/overworld/npc_movement.asm"
 INCLUDE "engine/overworld/doors.asm"
 INCLUDE "engine/overworld/ledges.asm"
 
+INCLUDE "engine/battle/moveEffects/other_stat_modifications.asm"
+INCLUDE "engine/battle/core_2.asm"
+
 
 SECTION "bank7",ROMX,BANK[$7]
 

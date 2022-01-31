@@ -35,13 +35,13 @@ const_value = 0
 	const SWITCH_AND_TELEPORT_EFFECT ; $1C
 	const TWO_TO_FIVE_ATTACKS_EFFECT ; $1D
 	const UNUSED_EFFECT_1E           ; $1E
-	const FLINCH_SIDE_EFFECT1        ; $1F
+	const FLINCH_SIDE_EFFECT1        ; $1F 10% chance to flinch
 	const SLEEP_EFFECT               ; $20
 	const POISON_SIDE_EFFECT2        ; $21
 	const BURN_SIDE_EFFECT2          ; $22
 	const UNUSED_EFFECT_23           ; $23
 	const PARALYZE_SIDE_EFFECT2      ; $24
-	const FLINCH_SIDE_EFFECT2        ; $25
+	const FLINCH_SIDE_EFFECT2        ; $25 20% chance to flinch
 	const OHKO_EFFECT                ; $26 moves like Horn Drill
 	const CHARGE_EFFECT              ; $27 moves like Solar Beam
 	const SUPER_FANG_EFFECT          ; $28
@@ -91,8 +91,10 @@ const_value = 0
 	const LEECH_SEED_EFFECT          ; $54
 	const SPLASH_EFFECT              ; $55
 	const DISABLE_EFFECT             ; $56
-	const FLINCH_SIDE_EFFECT3        ; $57
-	const BURN_EFFECT                ; $58
+	const FLINCH_SIDE_EFFECT3        ; $57 30% chance to flinch
+	const BURN_EFFECT                ; $58 will-o-wisp
+	const GROWTH_EFFECT              ; $59 raises user's attack and special by 1 stage
+	const TRI_ATTACK_EFFECT          ; $5A 10% chance to burn, paralyze or freeze
 
 ; fixed damage constants
 SONICBOOM_DAMAGE   EQU 20
