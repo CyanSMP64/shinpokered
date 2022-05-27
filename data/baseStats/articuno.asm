@@ -13,7 +13,7 @@ dw ArticunoPicFront
 dw ArticunoPicBack
 ; attacks known at lvl 0
 db GUST
-db 0 ; ICE_SHARD
+db ICE_SHARD
 db 0
 db 0
 db 5 ; growth rate

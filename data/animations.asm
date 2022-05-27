@@ -163,16 +163,52 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
+	;dw ProtectAnim
 	dw SludgeBombAnim
 	dw OutrageAnim
 	dw MegahornAnim
+	;dw EncoreAnim
 	dw IronTailAnim
 	dw CrunchAnim
 	dw MirrorCoatAnim
 	dw ShadowBallAnim
+	;dw FakeOutAnim
 	dw HeatWaveAnim
 	dw WillOWispAnim
+	;dw FacadeAnim
+	;dw TauntAnim
+	;dw SuperpowerAnim
+	dw BrickBreakAnim
+	;dw YawnAnim
+	;dw BulkUpAnim
 	dw CalmMindAnim
+	dw RoostAnim
+	dw FeintAnim
+	;dw UTurnAnim
+	;dw SuckerPunchAnim
+	dw FlareBlitzAnim
+	dw PoisonJabAnim
+	dw DarkPulseAnim
+	dw AirSlashAnim
+	dw XScissorAnim
+	dw BugBuzzAnim
+	dw DragonPulseAnim
+	dw NastyPlotAnim
+	dw IceShardAnim
+	dw FlashCannonAnim
+	dw PowerWhipAnim
+	;dw StealthRockAnim
+	dw AquaJetAnim
+	;dw QuiverDanceAnim
+	;dw FoulPlayAnim
+	;dw ClearSmogAnim
+	dw ScaldAnim
+	;dw ShellSmashAnim
+	;dw DragonTailAnim
+	dw DrillRunAnim
+	dw PlayRoughAnim
+	dw MoonblastAnim
+	dw DazzleGleamAnim
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -221,6 +257,42 @@ AttackAnimationPointers:
 ; $FF terminated
 ZigZagScreenAnim:
 	db SE_WAVY_SCREEN, $FF
+;ProtectAnim:
+;EncoreAnim:
+;FakeOutAnim:
+;FacadeAnim:
+;TauntAnim:
+;SuperpowerAnim:
+BrickBreakAnim:
+;YawnAnim:
+;BulkUpAnim:
+RoostAnim:
+FeintAnim:
+;UTurnAnim:
+;SuckerPunchAnim:
+FlareBlitzAnim:
+PoisonJabAnim:
+DarkPulseAnim:
+AirSlashAnim:
+XScissorAnim:
+BugBuzzAnim:
+DragonPulseAnim:
+NastyPlotAnim:
+IceShardAnim:
+FlashCannonAnim:
+PowerWhipAnim:
+;StealthRockAnim:
+AquaJetAnim:
+;QuiverDanceAnim:
+;FoulPlayAnim:
+;ClearSmogAnim:
+ScaldAnim:
+;ShellSmashAnim:
+;DragonTailAnim:
+DrillRunAnim:
+PlayRoughAnim:
+MoonblastAnim:
+DazzleGleamAnim:
 	db $FF
 
 PoundAnim:
@@ -1205,8 +1277,8 @@ WillOWispAnim:
 
 CalmMindAnim:
 	db SE_DARKEN_MON_PALETTE, $FF
-	db $46,$AD,$43
-	db $46,$AD,$43
+	db $46,$AE,$43
+	db $46,$AE,$43
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 

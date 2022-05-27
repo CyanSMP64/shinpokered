@@ -19,6 +19,7 @@ ResidualEffects1:
 	db MIMIC_EFFECT
 	db LEECH_SEED_EFFECT
 	db SPLASH_EFFECT
+	db BURN_EFFECT
 	db -1
 SetDamageEffects:
 ; moves that do damage but not through normal calculations
@@ -57,6 +58,7 @@ ResidualEffects2:
 	db SPECIAL_DOWN2_EFFECT
 	db ACCURACY_DOWN2_EFFECT
 	db EVASION_DOWN2_EFFECT
+	db GROWTH_EFFECT
 	db -1
 AlwaysHappenSideEffects:
 ; Attacks that aren't finished after they faint the opponent.
@@ -5123,6 +5125,7 @@ HighCriticalMoves:
 	db SLASH
 	db RAZOR_WIND
 	db SKY_ATTACK
+	db DRILL_RUN
 	db $FF
 
 
@@ -5181,31 +5184,6 @@ HandleCounterMove:
 ; if the move wasn't a physical move, miss
 	xor a
 	ret
-.counterableType
-	ld hl, wDamage
-	ld a, [hli]
-	or [hl]
-	ret z ; If we made it here, Counter still misses if the last move used in battle did no damage to its target.
-	      ; wDamage is shared by both players, so Counter may strike back damage dealt by the Counter user itself
-	      ; if the conditions meet, even though 99% of the times damage will come from the target.
-; if it did damage, double it
-	ld a, [hl]
-	add a
-	ldd [hl], a
-	ld a, [hl]
-	adc a
-	ld [hl], a
-	jr nc, .noCarry
-; damage is capped at 0xFFFF
-	ld a, $ff
-	ld [hli], a
-	ld [hl], a
-.noCarry
-	xor a
-	ld [wMoveMissed], a
-	call MoveHitTest ; do the normal move hit test in addition to Counter's special rules
-	xor a
-	ret
 .usingMirrorCoat
 	ld a, $01
 	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
@@ -5235,6 +5213,31 @@ HandleCounterMove:
 ; if the move wasn't a special move, miss
 	xor a
 .counterMiss
+	ret
+.counterableType
+	ld hl, wDamage
+	ld a, [hli]
+	or [hl]
+	ret z ; If we made it here, Counter still misses if the last move used in battle did no damage to its target.
+	      ; wDamage is shared by both players, so Counter may strike back damage dealt by the Counter user itself
+	      ; if the conditions meet, even though 99% of the times damage will come from the target.
+; if it did damage, double it
+	ld a, [hl]
+	add a
+	ldd [hl], a
+	ld a, [hl]
+	adc a
+	ld [hl], a
+	jr nc, .noCarry
+; damage is capped at 0xFFFF
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+.noCarry
+	xor a
+	ld [wMoveMissed], a
+	call MoveHitTest ; do the normal move hit test in addition to Counter's special rules
+	xor a
 	ret
 
 ApplyAttackToEnemyPokemon:
@@ -6018,6 +6021,10 @@ MoveHitTest:
 	ld a, [de]
 	cp SWIFT_EFFECT
 	ret z ; Swift never misses (interestingly, Azure Heights lists this is a myth, but it appears to be true)
+;	cp YAWN_EFFECT
+;	ret z
+	cp HAZE_EFFECT
+	ret z
 	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
 	jr z, .checkForDigOrFlyStatus
 ; this code is buggy. it's supposed to prevent HP draining moves from working on substitutes.
@@ -6435,7 +6442,7 @@ EnemyCheckIfMirrorMoveEffect:
 	cp EXPLODE_EFFECT
 	jr z, .handleExplosionMiss
 	;cp HYPER_BEAM_EFFECT ;joenote - makes hyperbeam recharge even if it misses
-	jr z, .handleExplosionMiss
+	;jr z, .handleExplosionMiss
 	jp ExecuteEnemyMoveDone
 .moveDidNotMiss
 	call ApplyAttackToPlayerPokemon

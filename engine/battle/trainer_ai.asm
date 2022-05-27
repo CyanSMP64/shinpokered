@@ -184,7 +184,7 @@ AIMoveChoiceModification1:
 	and a
 	jp z, .heavydiscourage	;heavily discourage counter if enemy is using zero-power move
 	ld a, [wPlayerSelectedMove]
-	call PhysicalSpecialSplit
+	farcall PhysicalSpecialSplit
 	cp a, PHYSICAL
 	jr z, .countercheck_end	; continue on if countering STRUGGLE or other typeless move
 	jp .heavydiscourage	;else heavily discourage since the player move type is not applicable to counter
@@ -199,7 +199,7 @@ AIMoveChoiceModification1:
 	and a
 	jp z, .heavydiscourage	;heavily discourage mirror coat if enemy is using zero-power move
 	ld a, [wPlayerSelectedMove]
-	call PhysicalSpecialSplit
+	farcall PhysicalSpecialSplit
 	cp a, SPECIAL
 	jr z, .mirrorcoatcheck_end	
 	jp .heavydiscourage	;else heavily discourage since the player move type is not applicable to counter
@@ -757,6 +757,12 @@ AIMoveChoiceModification3:
 	jr c, .flydigcheck_faster	;a set carry bit means the ai 'mon is faster
 	ld a, [wEnemyMoveNum]
 	cp QUICK_ATTACK
+	jr z, .flydigcheck_faster
+	cp FEINT
+	jr z, .flydigcheck_faster
+	cp ICE_SHARD
+	jr z, .flydigcheck_faster
+	cp AQUA_JET
 	jr z, .flydigcheck_faster
 
 .flydigcheck_notfaster

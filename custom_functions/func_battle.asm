@@ -30,6 +30,12 @@ HighPriorityMoves:
 	cp QUICK_ATTACK
 	ret z
 	cp BIDE
+	ret z
+	cp FEINT
+	ret z
+	cp ICE_SHARD
+	ret z
+	cp AQUA_JET
 	ret
 
 

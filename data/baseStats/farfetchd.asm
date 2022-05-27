@@ -15,7 +15,7 @@ dw FarfetchdPicBack
 db PECK
 db SAND_ATTACK
 db LEER
-db 0 ; FEINT
+db FEINT
 db 0 ; growth rate
 ; learnset
 	tmlearn 2,3,4,6,8

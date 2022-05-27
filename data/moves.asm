@@ -84,7 +84,7 @@ MoveEnd:
 	move ABSORB,       DRAIN_HP_EFFECT,             40, GRASS,    100, 15
 	move MEGA_DRAIN,   DRAIN_HP_EFFECT,             75, GRASS,    100, 10
 	move LEECH_SEED,   LEECH_SEED_EFFECT,            0, GRASS,     90, 10
-	move GROWTH,       GROWTH_EFFECT,                0, NORMAL,   100, 20 ; todo: raise both attack and special
+	move GROWTH,       GROWTH_EFFECT,                0, NORMAL,   100, 20
 	move RAZOR_LEAF,   NO_ADDITIONAL_EFFECT,        55, GRASS,     95, 25
 	move SOLARBEAM,    CHARGE_EFFECT,              200, GRASS,    100, 10
 	move POISONPOWDER, POISON_EFFECT,                0, POISON,    75, 35
@@ -171,18 +171,54 @@ MoveEnd:
 	move HYPER_FANG,   FLINCH_SIDE_EFFECT1,         80, NORMAL,    90, 15
 	move SHARPEN,      ATTACK_UP1_EFFECT,            0, NORMAL,   100, 30
 	move CONVERSION,   CONVERSION_EFFECT,            0, NORMAL,   100, 30
-	move TRI_ATTACK,   TRI_ATTACK_EFFECT,           80, NORMAL,   100, 10 ; todo: implement tri attack effect
+	move TRI_ATTACK,   TRI_ATTACK_EFFECT,           80, NORMAL,   100, 10
 	move SUPER_FANG,   SUPER_FANG_EFFECT,            1, NORMAL,    90, 10
 	move SLASH,        NO_ADDITIONAL_EFFECT,        70, NORMAL,   100, 20
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,   100, 10
+;	move PROTECT,	   PROTECT_EFFECT,               0, NORMAL,   100, 10
 	move SLUDGE_BOMB,  POISON_SIDE_EFFECT1,         90, POISON,   100, 10
 	move OUTRAGE,      THRASH_PETAL_DANCE_EFFECT,  120, DRAGON,   100, 10
 	move MEGAHORN,     NO_ADDITIONAL_EFFECT,       120, BUG,       85, 10
+;	move ENCORE,	   ENCORE_EFFECT,                0, NORMAL,   100,  5
 	move IRON_TAIL,    DEFENSE_DOWN_SIDE_EFFECT,   100, STEEL,     75, 15
 	move CRUNCH,       DEFENSE_DOWN_SIDE_EFFECT,    80, DARK,     100, 15
 	move MIRROR_COAT,  NO_ADDITIONAL_EFFECT,         1, PSYCHIC,  100, 20
 	move SHADOW_BALL,  SPECIAL_DOWN_SIDE_EFFECT,    80, GHOST,    100, 15
+;	move FAKE_OUT,	   FAKE_OUT_EFFECT,             40, NORMAL,   100, 10
 	move HEAT_WAVE,    BURN_SIDE_EFFECT1,           95, FIRE,      90, 10
 	move WILL_O_WISP,  BURN_EFFECT,                  0, FIRE,      85, 15
+;	move FACADE,	   FACADE_EFFECT,               70, NORMAL,   100, 20
+;	move TAUNT,	       TAUNT_EFFECT,                 0, DARK,     100, 20
+;	move SUPERPOWER,   SUPERPOWER_EFFECT,          120, FIGHTING, 100,  5
+	move BRICK_BREAK,  NO_ADDITIONAL_EFFECT,        75, FIGHTING, 100, 15 ; todo: remove screens
+;	move YAWN,	       YAWN_EFFECT,                  0, NORMAL,   100, 10
+;	move BULK_UP,	   BULK_UP_EFFECT,               0, FIGHTING, 100, 20
 	move CALM_MIND,    SPECIAL_UP1_EFFECT,           0, PSYCHIC,  100, 20
+	move ROOST,	       HEAL_EFFECT,                  0, FLYING,   100, 10
+	move FEINT,	       NO_ADDITIONAL_EFFECT,        30, NORMAL,   100, 10 ; todo: bypass protect
+;	move U_TURN,	   U_TURN_EFFECT,               70, BUG,      100, 20
+;	move SUCKER_PUNCH, SUCKER_PUNCH_EFFECT,         70, DARK,     100,  5
+	move FLARE_BLITZ,  RECOIL_EFFECT,              120, FIRE,     100, 15 ; todo: 10% chance to burn
+	move POISON_JAB,   POISON_SIDE_EFFECT1,         80, POISON,   100, 20
+	move DARK_PULSE,   FLINCH_SIDE_EFFECT2,         80, DARK,     100, 15
+	move AIR_SLASH,	   FLINCH_SIDE_EFFECT3,         75, FLYING,    95, 15
+	move X_SCISSOR,	   NO_ADDITIONAL_EFFECT,        80, BUG,      100, 15
+	move BUG_BUZZ,	   SPECIAL_DOWN_SIDE_EFFECT,    90, BUG,      100, 10
+	move DRAGON_PULSE, NO_ADDITIONAL_EFFECT,        85, DRAGON,   100, 10
+	move NASTY_PLOT,   SPECIAL_UP2_EFFECT,           0, DARK,     100, 20
+	move ICE_SHARD,    NO_ADDITIONAL_EFFECT,        40, ICE,      100, 30
+	move FLASH_CANNON, SPECIAL_DOWN_SIDE_EFFECT,    80, STEEL,    100, 10
+	move POWER_WHIP,   NO_ADDITIONAL_EFFECT,       120, GRASS,     85, 10
+;	move STEALTH_ROCK, STEALTH_ROCK_EFFECT,          0, ROCK,     100, 20
+	move AQUA_JET,     NO_ADDITIONAL_EFFECT,        40, WATER,    100, 20
+;	move QUIVER_DANCE, QUIVER_DANCE_EFFECT,          0, BUG,      100, 20
+;	move FOUL_PLAY,    FOUL_PLAY_EFFECT,            95, DARK,     100, 15
+;	move CLEAR_SMOG,   HAZE_EFFECT,                 50, POISON,   100, 15
+	move SCALD,        BURN_SIDE_EFFECT2,           80, WATER,    100, 15
+;	move SHELL_SMASH,  SHELL_SMASH_EFFECT,           0, NORMAL,   100, 15
+;	move DRAGON_TAIL,  DRAGON_TAIL_EFFECT,          60, DRAGON,    90, 10
+	move DRILL_RUN,    NO_ADDITIONAL_EFFECT,        80, GROUND,    95, 10 ; increased crit ratio
+	move PLAY_ROUGH,   ATTACK_DOWN_SIDE_EFFECT,     90, FAIRY,     90, 10
+	move MOONBLAST,    SPECIAL_DOWN_SIDE_EFFECT,    95, FAIRY,    100, 15 ; 30% chance to lower special
+	move DAZZLE_GLEAM, NO_ADDITIONAL_EFFECT,        80, FAIRY,    100, 10
 	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,     100,  1 ; take 1/4 recoil damage
